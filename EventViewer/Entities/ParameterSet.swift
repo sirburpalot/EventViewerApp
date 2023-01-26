@@ -32,32 +32,32 @@ public struct ParameterSet: CustomStringConvertible, Collection {
     }
 
     public func index(after i: Index) -> Index {
-        self.data.index(after: i)
+        data.index(after: i)
     }
 
     public func makeIterator() -> DictionaryIterator<Key, Value> {
-        self.data.makeIterator()
+        data.makeIterator()
     }
 
     public subscript(index: Key) -> Value? {
-        get { self.data[index] }
-        set { self.data[index] = newValue }
+        get { data[index] }
+        set { data[index] = newValue }
     }
 
     public subscript(position: Index) -> Iterator.Element {
-        self.data[position]
+        data[position]
     }
 
     public subscript(bounds: Range<Index>) -> SubSequence {
-        self.data[bounds]
+        data[bounds]
     }
 
     public var asAny: [String: Any] {
-        self.data.reduce(into: [String: Any](), { $0[$1.key] = $1.value.asAny })
+        data.reduce(into: [String: Any](), { $0[$1.key] = $1.value.asAny })
     }
 
     public func mapValues<T>(_ transform: (Value) throws -> T) rethrows -> [Key: T] {
-        try self.data.mapValues(transform)
+        try data.mapValues(transform)
     }
 
 }

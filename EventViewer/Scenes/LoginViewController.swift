@@ -39,29 +39,29 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureUI()
-        self.configureSubviews()
-        self.configureConstraints()
+        configureUI()
+        configureSubviews()
+        configureConstraints()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.eventManager.capture(.presentScene("login"))
+        eventManager.capture(.viewScreen("LOGIN_FORM"))
     }
     
     // MARK: - Configuration
     
     private func configureUI() {
-        self.navigationItem.title = "Login"
-        self.view.backgroundColor = .systemBackground
+        navigationItem.title = "Login"
+        view.backgroundColor = .systemBackground
     }
     
     private func configureSubviews() {
-        self.view.addSubview(self.loginButton)
+        view.addSubview(self.loginButton)
     }
     
     private func configureConstraints() {
-        self.loginButton.snp.makeConstraints({ maker in
+        loginButton.snp.makeConstraints({ maker in
             maker.center.equalToSuperview()
         })
     }
@@ -69,8 +69,8 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     private func login() {
-        self.eventManager.capture(.login)
-        self.dismiss(animated: true)
+        eventManager.capture(.login)
+        dismiss(animated: true)
     }
     
 }

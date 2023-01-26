@@ -35,29 +35,29 @@ class EventsListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureUI()
+        configureUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.eventManager.capture(.presentScene("events-list"))
+        eventManager.capture(.viewScreen("EVENTS_LIST"))
     }
     
     // MARK: - Configuration
     
     private func configureUI() {
-        self.navigationItem.title = "Events List"
-        self.navigationItem.rightBarButtonItem = self.logoutBarButtonItem
+        navigationItem.title = "Events List"
+        navigationItem.rightBarButtonItem = self.logoutBarButtonItem
     }
     
     // MARK: - Actions
     
     @objc
     private func logout() {
-        self.eventManager.capture(.logout)
-        let vc = LoginViewController(eventManager: self.eventManager)
+        eventManager.capture(.logout)
+        let vc = LoginViewController(eventManager: eventManager)
         let navVc = UINavigationController(rootViewController: vc)
-        self.present(navVc, animated: true)
+        present(navVc, animated: true)
     }
     
 }

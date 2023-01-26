@@ -22,10 +22,10 @@ public extension Event {
         Event(id: "LOGOUT")
     }
 
-    static func presentScene(_ scene: String) -> Event {
-        var newParams: ParameterSet = [:]
-        newParams["scene"] = .string(scene)
-        return Event(id: "PRESENT_SCENE", parameters: newParams)
+    static func viewScreen(_ screenId: String) -> Event {
+        Event(id: "VIEW_SCREEN", parameters: [
+            "SCREEN_ID": .string(screenId)
+        ])
     }
 
 }

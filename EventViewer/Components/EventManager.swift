@@ -18,8 +18,8 @@ public final class EventManager: NSPersistentContainer {
         let description = NSPersistentStoreDescription()
         description.shouldMigrateStoreAutomatically = true
         description.shouldInferMappingModelAutomatically = true
-        self.persistentStoreDescriptions.append(description)
-        self.loadPersistentStores(completionHandler: { _, error in
+        persistentStoreDescriptions.append(description)
+        loadPersistentStores(completionHandler: { _, error in
             if let error {
                 fatalError(error.localizedDescription)
             } else {
@@ -29,7 +29,7 @@ public final class EventManager: NSPersistentContainer {
     }
 
     public func capture(_ event: Event) {
-        self.performBackgroundTask({ context in
+        performBackgroundTask({ context in
             let newRecord = DBEvent(context: context)
             newRecord.id = event.id
             newRecord.createdAt = Date()
@@ -49,7 +49,7 @@ public final class EventManager: NSPersistentContainer {
 
     public func entitiesCount() -> Int {
         do {
-            return try self.viewContext.count(for: DBEvent.makeFetchRequest())
+            return try viewContext.count(for: DBEvent.makeFetchRequest())
         } catch {
             print("Error:", error.localizedDescription)
             return .zero
@@ -57,14 +57,14 @@ public final class EventManager: NSPersistentContainer {
     }
 
     public func containsEvent(_ event: String, withParameters parameters: ParameterSet? = nil) -> Bool {
-        self.containsEvent(with: self.preparePredicate(forEvent: event, withParameters: parameters))
+        containsEvent(with: preparePredicate(forEvent: event, withParameters: parameters))
     }
 
     public func containsEvent(with predicate: NSPredicate) -> Bool {
         let request = DBEvent.makeFetchRequest()
         request.predicate = predicate
         do {
-            return try self.viewContext.count(for: request) > 0
+            return try viewContext.count(for: request) > 0
         } catch {
             print("Error:", error.localizedDescription)
             return false
@@ -72,7 +72,7 @@ public final class EventManager: NSPersistentContainer {
     }
 
     public func lastDateOfEvent(_ event: String, withParameters parameters: ParameterSet? = nil) -> Date? {
-        self.lastDateOfEvent(with: self.preparePredicate(forEvent: event, withParameters: parameters))
+        lastDateOfEvent(with: preparePredicate(forEvent: event, withParameters: parameters))
     }
 
     public func lastDateOfEvent(with predicate: NSPredicate) -> Date? {
@@ -82,7 +82,7 @@ public final class EventManager: NSPersistentContainer {
         request.sortDescriptors = [sort]
         request.fetchLimit = 1
         do {
-            return try self.viewContext.fetch(request).first?.createdAt
+            return try viewContext.fetch(request).first?.createdAt
         } catch {
             print("Error:", error.localizedDescription)
             return nil
@@ -90,7 +90,7 @@ public final class EventManager: NSPersistentContainer {
     }
 
     public func clean(completion: ((Error?) -> Void)? = nil) {
-        self.performBackgroundTask { context in
+        performBackgroundTask { context in
             do {
                 let deleteFetch = NSFetchRequest<NSFetchRequestResult>(entityName: DBEvent.entityName)
                 let deleteRequest = NSBatchDeleteRequest(fetchRequest: deleteFetch)

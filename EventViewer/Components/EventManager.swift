@@ -31,7 +31,7 @@ public final class EventManager: NSPersistentContainer {
     public func capture(_ event: Event) {
         self.performBackgroundTask({ context in
             let newRecord = DBEvent(context: context)
-            newRecord.id = event.id.rawValue
+            newRecord.id = event.id
             newRecord.createdAt = Date()
             if !event.parameters.isEmpty {
                 newRecord.parameters = Set(event.parameters.map({
@@ -56,7 +56,7 @@ public final class EventManager: NSPersistentContainer {
         }
     }
 
-    public func containsEvent(_ event: Event.Identifier, withParameters parameters: ParameterSet? = nil) -> Bool {
+    public func containsEvent(_ event: String, withParameters parameters: ParameterSet? = nil) -> Bool {
         self.containsEvent(with: self.preparePredicate(forEvent: event, withParameters: parameters))
     }
 
@@ -71,7 +71,7 @@ public final class EventManager: NSPersistentContainer {
         }
     }
 
-    public func lastDateOfEvent(_ event: Event.Identifier, withParameters parameters: ParameterSet? = nil) -> Date? {
+    public func lastDateOfEvent(_ event: String, withParameters parameters: ParameterSet? = nil) -> Date? {
         self.lastDateOfEvent(with: self.preparePredicate(forEvent: event, withParameters: parameters))
     }
 
@@ -110,9 +110,9 @@ public final class EventManager: NSPersistentContainer {
         }
     }
 
-    private func preparePredicate(forEvent event: Event.Identifier, withParameters parameters: ParameterSet?) -> NSPredicate {
+    private func preparePredicate(forEvent event: String, withParameters parameters: ParameterSet?) -> NSPredicate {
         var subPredicates: [NSPredicate] = [
-            NSPredicate(format: "id=%@", event.rawValue)
+            NSPredicate(format: "id=%@", event)
         ]
         if let parameters {
             for (key, paramValue) in parameters {
@@ -130,7 +130,7 @@ public final class EventManager: NSPersistentContainer {
                 }()
                 let paramPredicate = NSPredicate(
                     format: "SUBQUERY(parameters, $p, $p.key = %@ AND $p.\(value.format)).@count > 0",
-                    key.rawValue,
+                    key,
                     value.arg
                 )
                 subPredicates.append(paramPredicate)

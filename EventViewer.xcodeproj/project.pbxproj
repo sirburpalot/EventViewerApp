@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F3CB02DF2982E91D0078A0F9 /* EventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02D52982E91D0078A0F9 /* EventIdentifier.swift */; };
 		F3CB02E02982E91D0078A0F9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02D62982E91D0078A0F9 /* Event.swift */; };
 		F3CB02E12982E91D0078A0F9 /* EventRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02D72982E91D0078A0F9 /* EventRegistry.swift */; };
 		F3CB02E22982E91D0078A0F9 /* DBParamenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02D82982E91D0078A0F9 /* DBParamenter.swift */; };
@@ -26,7 +25,6 @@
 /* Begin PBXFileReference section */
 		F3CB02C12982E8D50078A0F9 /* EventViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3CB02CA2982E8D70078A0F9 /* EventViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventViewer.entitlements; sourceTree = "<group>"; };
-		F3CB02D52982E91D0078A0F9 /* EventIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventIdentifier.swift; sourceTree = "<group>"; };
 		F3CB02D62982E91D0078A0F9 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		F3CB02D72982E91D0078A0F9 /* EventRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRegistry.swift; sourceTree = "<group>"; };
 		F3CB02D82982E91D0078A0F9 /* DBParamenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBParamenter.swift; sourceTree = "<group>"; };
@@ -99,7 +97,6 @@
 			children = (
 				F3CB02D62982E91D0078A0F9 /* Event.swift */,
 				F3CB02E92982E9890078A0F9 /* ParameterSet.swift */,
-				F3CB02D52982E91D0078A0F9 /* EventIdentifier.swift */,
 				F3CB02D82982E91D0078A0F9 /* DBParamenter.swift */,
 				F3CB02DB2982E91D0078A0F9 /* DBEvent.swift */,
 			);
@@ -213,7 +210,6 @@
 				F3CB02F22982EBAB0078A0F9 /* AppDelegate.swift in Sources */,
 				F3CB02F62982EC100078A0F9 /* EventsListViewController.swift in Sources */,
 				F3CB02F42982EBC60078A0F9 /* SceneDelegate.swift in Sources */,
-				F3CB02DF2982E91D0078A0F9 /* EventIdentifier.swift in Sources */,
 				F3CB02E52982E91D0078A0F9 /* DBEvent.swift in Sources */,
 				F3CB02ED2982E9CD0078A0F9 /* CoreData+Utilities.swift in Sources */,
 				F3CB02E02982E91D0078A0F9 /* Event.swift in Sources */,

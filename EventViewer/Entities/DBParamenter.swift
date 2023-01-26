@@ -65,7 +65,7 @@ extension DBParameter {
     convenience init(parameter: (ParameterSet.Key, ParameterSet.Value), context: NSManagedObjectContext) {
         self.init(context: context)
         let (key, value) = parameter
-        self.key = key.rawValue
+        self.key = key
         switch value {
         case .bool(let value):
             self.booleanValue = value

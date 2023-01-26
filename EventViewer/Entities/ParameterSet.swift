@@ -9,7 +9,7 @@ import Foundation
 
 public struct ParameterSet: CustomStringConvertible, Collection {
 
-    public typealias DictionaryType = [Key: Value]
+    public typealias DictionaryType = [String: Value]
 
     // Collection: these are the access methods
     public typealias Indices = DictionaryType.Indices
@@ -53,7 +53,7 @@ public struct ParameterSet: CustomStringConvertible, Collection {
     }
 
     public var asAny: [String: Any] {
-        self.data.reduce(into: [String: Any](), { $0[$1.key.rawValue] = $1.value.asAny })
+        self.data.reduce(into: [String: Any](), { $0[$1.key] = $1.value.asAny })
     }
 
     public func mapValues<T>(_ transform: (Value) throws -> T) rethrows -> [Key: T] {
@@ -63,28 +63,9 @@ public struct ParameterSet: CustomStringConvertible, Collection {
 }
 
 extension ParameterSet: ExpressibleByDictionaryLiteral {
-    public init(dictionaryLiteral elements: (Key, Value)...) {
-        self.data = elements.reduce(into: [Key: Value](), { $0[$1.0] = $1.1 })
+    public init(dictionaryLiteral elements: (String, Value)...) {
+        self.data = elements.reduce(into: [String: Value](), { $0[$1.0] = $1.1 })
     }
-}
-
-public extension ParameterSet {
-    struct Key: Hashable, RawRepresentable {
-        public let rawValue: String
-        public init(rawValue: String) {
-            self.rawValue = rawValue
-        }
-    }
-}
-
-extension ParameterSet.Key: ExpressibleByStringLiteral {
-    public init(stringLiteral value: StringLiteralType) {
-        self.rawValue = value
-    }
-}
-
-extension ParameterSet.Key: CustomStringConvertible {
-    public var description: String { self.rawValue }
 }
 
 public extension ParameterSet {

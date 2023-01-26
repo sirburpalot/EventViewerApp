@@ -14,7 +14,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
     
     override init() {
-        self.eventManager = PersistantEventManager()
+        self.eventManager = EventManager()
         super.init()
     }
 

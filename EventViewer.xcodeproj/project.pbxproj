@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F3CB02DE2982E91D0078A0F9 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02D42982E91D0078A0F9 /* EventManager.swift */; };
 		F3CB02DF2982E91D0078A0F9 /* EventIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02D52982E91D0078A0F9 /* EventIdentifier.swift */; };
 		F3CB02E02982E91D0078A0F9 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02D62982E91D0078A0F9 /* Event.swift */; };
 		F3CB02E12982E91D0078A0F9 /* EventRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02D72982E91D0078A0F9 /* EventRegistry.swift */; };
 		F3CB02E22982E91D0078A0F9 /* DBParamenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02D82982E91D0078A0F9 /* DBParamenter.swift */; };
 		F3CB02E52982E91D0078A0F9 /* DBEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02DB2982E91D0078A0F9 /* DBEvent.swift */; };
-		F3CB02E62982E91D0078A0F9 /* PersistentEventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02DC2982E91D0078A0F9 /* PersistentEventManager.swift */; };
-		F3CB02E72982E91D0078A0F9 /* PersistantEventManager+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02DD2982E91D0078A0F9 /* PersistantEventManager+Model.swift */; };
+		F3CB02E62982E91D0078A0F9 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02DC2982E91D0078A0F9 /* EventManager.swift */; };
+		F3CB02E72982E91D0078A0F9 /* EventManager+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02DD2982E91D0078A0F9 /* EventManager+Model.swift */; };
 		F3CB02EA2982E9890078A0F9 /* ParameterSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02E92982E9890078A0F9 /* ParameterSet.swift */; };
 		F3CB02ED2982E9CD0078A0F9 /* CoreData+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3CB02EC2982E9CD0078A0F9 /* CoreData+Utilities.swift */; };
 		F3CB02F02982EB570078A0F9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = F3CB02EF2982EB570078A0F9 /* SnapKit */; };
@@ -27,14 +26,13 @@
 /* Begin PBXFileReference section */
 		F3CB02C12982E8D50078A0F9 /* EventViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EventViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3CB02CA2982E8D70078A0F9 /* EventViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EventViewer.entitlements; sourceTree = "<group>"; };
-		F3CB02D42982E91D0078A0F9 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		F3CB02D52982E91D0078A0F9 /* EventIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventIdentifier.swift; sourceTree = "<group>"; };
 		F3CB02D62982E91D0078A0F9 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		F3CB02D72982E91D0078A0F9 /* EventRegistry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventRegistry.swift; sourceTree = "<group>"; };
 		F3CB02D82982E91D0078A0F9 /* DBParamenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBParamenter.swift; sourceTree = "<group>"; };
 		F3CB02DB2982E91D0078A0F9 /* DBEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBEvent.swift; sourceTree = "<group>"; };
-		F3CB02DC2982E91D0078A0F9 /* PersistentEventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersistentEventManager.swift; sourceTree = "<group>"; };
-		F3CB02DD2982E91D0078A0F9 /* PersistantEventManager+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PersistantEventManager+Model.swift"; sourceTree = "<group>"; };
+		F3CB02DC2982E91D0078A0F9 /* EventManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
+		F3CB02DD2982E91D0078A0F9 /* EventManager+Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EventManager+Model.swift"; sourceTree = "<group>"; };
 		F3CB02E92982E9890078A0F9 /* ParameterSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterSet.swift; sourceTree = "<group>"; };
 		F3CB02EC2982E9CD0078A0F9 /* CoreData+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Utilities.swift"; sourceTree = "<group>"; };
 		F3CB02F12982EBAB0078A0F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -89,10 +87,9 @@
 		F3CB02D32982E91D0078A0F9 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				F3CB02D42982E91D0078A0F9 /* EventManager.swift */,
 				F3CB02D72982E91D0078A0F9 /* EventRegistry.swift */,
-				F3CB02DC2982E91D0078A0F9 /* PersistentEventManager.swift */,
-				F3CB02DD2982E91D0078A0F9 /* PersistantEventManager+Model.swift */,
+				F3CB02DC2982E91D0078A0F9 /* EventManager.swift */,
+				F3CB02DD2982E91D0078A0F9 /* EventManager+Model.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -209,9 +206,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F3CB02E62982E91D0078A0F9 /* PersistentEventManager.swift in Sources */,
-				F3CB02DE2982E91D0078A0F9 /* EventManager.swift in Sources */,
-				F3CB02E72982E91D0078A0F9 /* PersistantEventManager+Model.swift in Sources */,
+				F3CB02E62982E91D0078A0F9 /* EventManager.swift in Sources */,
+				F3CB02E72982E91D0078A0F9 /* EventManager+Model.swift in Sources */,
 				F3CB02F92982EED00078A0F9 /* LoginViewController.swift in Sources */,
 				F3CB02E22982E91D0078A0F9 /* DBParamenter.swift in Sources */,
 				F3CB02F22982EBAB0078A0F9 /* AppDelegate.swift in Sources */,

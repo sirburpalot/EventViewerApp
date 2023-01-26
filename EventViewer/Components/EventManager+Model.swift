@@ -8,7 +8,7 @@
 
 import CoreData
 
-extension PersistantEventManager {
+extension EventManager {
 
     static let model: NSManagedObjectModel = {
 

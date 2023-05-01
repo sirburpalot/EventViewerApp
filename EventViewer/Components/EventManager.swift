@@ -12,6 +12,7 @@ import Foundation
 public final class EventManager: NSPersistentContainer {
 
     public let queue = DispatchQueue(label: "com.simla.PersistantEventManager", qos: .default)
+    weak var delegate: EventManagerDelegate?
 
     public init() {
         super.init(name: "PersistantEventManagerDB", managedObjectModel: Self.model)
@@ -28,11 +29,11 @@ public final class EventManager: NSPersistentContainer {
         })
     }
 
-    public func capture(_ event: Event) {
+    public func capture(_ event: Event, date: Date? = nil) {
         performBackgroundTask({ context in
             let newRecord = DBEvent(context: context)
             newRecord.id = event.id
-            newRecord.createdAt = Date()
+            newRecord.createdAt = date ?? Date()
             if !event.parameters.isEmpty {
                 newRecord.parameters = Set(event.parameters.map({
                     DBParameter(parameter: $0, context: context)
@@ -40,6 +41,7 @@ public final class EventManager: NSPersistentContainer {
             }
             do {
                 try context.save()
+                DispatchQueue.main.async { self.delegate?.notifyAboutUpdate() }
                 print("Event \"\(event.id)\" saved")
             } catch {
                 print("Error:", error.localizedDescription)
@@ -138,5 +140,39 @@ public final class EventManager: NSPersistentContainer {
         }
         return NSCompoundPredicate(andPredicateWithSubpredicates: subPredicates)
     }
+    
+    // My additions:
 
+    func eventsSortedByDate(limit: Int = 0, offset: Int = 0, searchString: String? = nil) -> [DBEvent] {
+        let request = DBEvent.makeFetchRequest()
+        let sort = NSSortDescriptor(key: #keyPath(DBEvent.createdAt), ascending: false)
+        request.sortDescriptors = [sort]
+        request.fetchLimit = limit
+        request.fetchOffset = offset
+        if let searchString {
+            request.predicate = NSPredicate(format: "id CONTAINS[cd] %@", searchString)
+        }
+        do {
+            let events = try viewContext.fetch(request)
+            return events
+        } catch {
+            print("Error:", error.localizedDescription)
+            return []
+        }
+    }
+    
+    func delete(event: DBEvent) -> Bool {
+        do {
+            viewContext.delete(event)
+            try viewContext.save()
+            return true
+        } catch {
+            print("Error:", error.localizedDescription)
+            return false
+        }
+    }
+}
+
+protocol EventManagerDelegate: AnyObject {
+    func notifyAboutUpdate()
 }

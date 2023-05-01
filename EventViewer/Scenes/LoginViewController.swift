@@ -70,6 +70,7 @@ class LoginViewController: UIViewController {
     
     private func login() {
         eventManager.capture(.login)
+        
         dismiss(animated: true)
     }
     

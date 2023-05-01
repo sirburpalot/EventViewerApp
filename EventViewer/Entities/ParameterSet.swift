@@ -162,3 +162,31 @@ public extension ParameterSet.Value {
     }
 
 }
+
+extension ParameterSet: Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode([String: ParameterSet.Value].self) {
+            self.data = value
+        } else {
+            throw DecodingError.typeMismatch(ParameterSet.Value.self, DecodingError.Context(codingPath: container.codingPath, debugDescription: "Unacceptable JSON."))
+        }
+    }
+}
+
+extension ParameterSet.Value: Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let value = try? container.decode(String.self) {
+            self.init(stringLiteral: value)
+        } else if let value = try? container.decode(Int.self) {
+            self.init(integerLiteral: value)
+        } else if let value = try? container.decode(Bool.self) {
+            self.init(booleanLiteral: value)
+        } else if let value = try? container.decode([ParameterSet.Value].self) {
+            self = .array(value)
+        } else {
+            throw DecodingError.typeMismatch(ParameterSet.Value.self, DecodingError.Context(codingPath: container.codingPath, debugDescription: "Unacceptable JSON."))
+        }
+    }
+}
